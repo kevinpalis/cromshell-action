@@ -1,0 +1,26 @@
+name: 'Cromshell'
+description: 'A GitHub Action to run Cromshell commands'
+author: 'Kevin Palis <palis@broadinstitute.org>'
+inputs:
+  command:
+    description: 'The Cromshell command to execute'
+    required: true
+runs:
+  using: 'composite'
+  steps:
+    - name: 'Set up Python'
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: 'Install Cromshell'
+      run: |
+        pip install cromshell
+
+    - name: 'Run Cromshell command'
+      run: |
+        echo "Running Cromshell command: ${{ inputs.command }}"
+        ${{ inputs.command }}
+branding:
+  icon: 'terminal'
+  color: 'blue'
