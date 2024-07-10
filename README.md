@@ -1,6 +1,13 @@
 # Cromshell Action
 
-This action runs Cromshell commands.
+
+This GitHub Action allows you to run [Cromshell](https://github.com/broadinstitute/cromshell) commands directly within your GitHub workflows. Cromshell is a command-line tool for interacting with the Cromwell workflow execution engine.
+
+## Features
+
+- Easily integrate Cromshell commands into your CI/CD pipeline
+- Supports all Cromshell commands
+- Runs directly on the host machine, not in a Docker container
 
 ## Inputs
 
@@ -8,9 +15,23 @@ This action runs Cromshell commands.
 
 **Required** The Cromshell command to execute.
 
-## Example usage
+## Example Usage
+
+Add the following to your workflow file to use this action:
 
 ```yaml
-uses: kevinpalis/cromshell@v1
-with:
-  command: 'cromshell <your-command-here>'
+name: Run Cromshell Command
+
+on: [push]
+
+jobs:
+  run-cromshell:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Run Cromshell Action
+      uses: kevinpalis/cromshell@v1
+      with:
+        command: 'cromshell -h'
