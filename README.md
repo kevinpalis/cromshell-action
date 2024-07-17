@@ -32,6 +32,6 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Run Cromshell Action
-      uses: kevinpalis/cromshell@v1
+      uses: kevinpalis/cromshell@v1.0.2
       with:
         command: 'cromshell -h'

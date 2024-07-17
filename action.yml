@@ -16,11 +16,13 @@ runs:
     - name: 'Install Cromshell'
       run: |
         pip install cromshell
+      shell: bash
 
     - name: 'Run Cromshell command'
       run: |
         echo "Running Cromshell command: ${{ inputs.command }}"
         ${{ inputs.command }}
+      shell: bash
 branding:
   icon: 'terminal'
   color: 'blue'
